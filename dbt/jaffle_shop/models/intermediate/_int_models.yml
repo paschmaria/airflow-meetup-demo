@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_customer_orders_aggregated
+    description: Aggregated customer order data
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer
+      - name: number_of_orders
+        description: Total number of orders placed by the customer
+      - name: total_order_amount
+        description: Total value of orders placed by the customer in USD
+      - name: average_order_amount
+        description: Average value of orders placed by the customer in USD
+      - name: first_order_at
+        description: Date of the customer's first order
+      - name: last_order_at
+        description: Date of the customer's most recent order
+      - name: min_order_value
+        description: Minimum value of orders placed by the customer
+      - name: max_order_value
+        description: Maximum value of orders placed by the customer
+
+  - name: int_store_orders_aggregated
+    description: Aggregated store order data
+    columns:
+      - name: store_id
+        description: Unique identifier for the store
+      - name: number_of_orders
+        description: Total number of orders placed at the store
+      - name: total_order_amount
+        description: Total value of orders placed at the store in USD
+      - name: average_order_amount
+        description: Average value of orders placed at the store in USD
+      - name: total_tax_paid
+        description: Total tax paid on orders placed at the store in USD
+      - name: first_order_at
+        description: Date of the store's first order
+      - name: last_order_at
+        description: Date of the store's most recent order

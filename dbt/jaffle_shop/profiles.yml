@@ -1,0 +1,22 @@
+templates:
+  postgres: &postgres
+    type: postgres
+    host: '{{ env_var(''DB_HOST'') }}'
+    user: '{{ env_var(''DB_USER'') }}'
+    password: '{{ env_var(''DBT_ENV_SECRET_DB_PASS'') }}'
+    port: 5433
+    schema: '{{ env_var(''DB_SCHEMA'') }}'
+    dbname: '{{ env_var(''DB_NAME'') }}'
+    threads: 8
+    keepalives_idle: 30
+
+jaffle_shop:
+  outputs:
+    dev:
+      <<: *postgres
+      connect_timeout: 300
+    stage:
+      <<: *postgres
+    prod:
+      <<: *postgres
+  target: '{{ env_var(''TARGET'') }}'

@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_jaffle_shop__customers
+    description: Customers who have made purchases
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: Customer's full name
+
+  - name: stg_jaffle_shop__orders
+    description: Orders placed by customers
+    columns:
+      - name: order_id
+        description: Unique identifier for the order
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Unique identifier for the customer who placed the order
+        tests:
+          - not_null
+      - name: store_id
+        description: Unique identifier for the store the order was placed at
+        tests:
+          - not_null
+      - name: subtotal
+        description: Total cost of the order before tax
+      - name: tax_paid
+        description: Tax charged on the order
+      - name: order_total
+        description: Total cost of the order after tax
+      - name: ordered_at
+        description: Date and time the order was placed
+
+  - name: stg_jaffle_shop__stores
+    description: Stores where orders are placed
+    columns:
+      - name: store_id
+        description: Unique identifier for the store
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: Store's name
+        tests:
+          - not_null
+      - name: opened_at
+        description: Date and time the store was opened
+      - name: tax_rate
+        description: Tax rate charged at the store

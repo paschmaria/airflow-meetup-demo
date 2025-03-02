@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    schema: public
+    description: Data loaded into our data warehouse from source systems
+    tables:
+      - name: customers
+        description: Customers who have made purchases
+        columns:
+          - name: id
+            description: Unique identifier for the customer
+          - name: name
+            description: Customer's full name
+            
+      - name: orders
+        description: Orders placed by customers
+        columns:
+          - name: id
+            description: Unique identifier for the order
+          - name: customer
+            description: Unique identifier for the customer who placed the order
+          - name: ordered_at
+            description: Date and time the order was placed
+          - name: store_id
+            description: Unique identifier for the store the order was placed at
+          - name: subtotal
+            description: Total cost of the order before tax
+          - name: tax_paid
+            description: Tax charged on the order
+          - name: order_total
+            description: Total cost of the order after tax
+
+      - name: stores
+        description: Stores where orders are placed
+        columns:
+          - name: id
+            description: Unique identifier for the store
+          - name: name
+            description: Store's name
+          - name: opened_at
+            description: Date and time the store was opened
+          - name: tax_rate
+            description: Tax rate charged at the store

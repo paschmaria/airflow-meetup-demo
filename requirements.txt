@@ -1,0 +1,7 @@
+astronomer-cosmos==1.9.0
+dbt-core
+dbt-postgres==1.9.0
+shandy-sqlfmt[jinjafmt]==0.26.0
+sqlfluff==3.3.1
+sqlfluff-templater-dbt==3.3.1
+black==25.1.0

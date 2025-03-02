@@ -1,0 +1,16 @@
+.git
+
+# Environments
+.env
+/venv
+
+# dbt files
+package-lock.yml
+.user.yml
+target/
+dbt_packages/
+logs/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.DS_Store

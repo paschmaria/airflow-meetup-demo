@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Customers who have made purchases
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: Customer's full name
+      - name: first_order_at
+        description: Date of the customer's first order
+      - name: last_order_at
+        description: Date of the customer's most recent order
+      - name: number_of_orders
+        description: Total number of orders placed by the customer
+      - name: total_order_amount
+        description: Total value of orders placed by the customer in USD
+
+  - name: dim_stores
+    description: Stores where orders are placed
+    columns:
+      - name: store_id
+        description: Unique identifier for the store
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: Store's name
+      - name: opened_at
+        description: Date and time the store was opened
+      - name: tax_rate
+        description: Tax rate charged at the store
+      - name: number_of_orders
+        description: Total number of orders placed at the store
+      - name: total_order_amount
+        description: Total value of orders placed at the store in USD
+        tests:
+          - not_null
+      - name: avg_order_amount
+        description: Average value of orders placed at the store in USD
+        tests:
+          - not_null
+      - name: total_tax_paid
+        description: Total tax paid on orders placed at the store in USD
+        tests:
+          - not_null
+      - name: store_age_days
+        description: Number of days since the store was opened
+      - name: avg_daily_orders_since_opening
+        description: Average number of orders placed at the store per day since opening
+      - name: first_order_at
+        description: Date of the store's first order
+      - name: last_order_at
+        description: Date of the store's most recent order
+
+  - name: fct_orders
+    description: Orders placed by customers
+    columns:
+      - name: order_id
+        description: Unique identifier for the order
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Unique identifier for the customer who placed the order
+        tests:
+          - not_null
+      - name: store_id
+        description: Unique identifier for the store the order was placed at
+        tests:
+          - not_null
+      - name: subtotal
+        description: Total cost of the order before tax
+      - name: tax_paid
+        description: Tax charged on the order
+      - name: order_total
+        description: Total cost of the order after Tax
+      - name: ordered_at
+        description: Date and time the order was placed
